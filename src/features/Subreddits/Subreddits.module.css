@@ -1,0 +1,16 @@
+.Subreddits {
+    background-color: rgb(240,240,240);
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    border: none
+}
+
+.button:hover {
+    cursor: pointer;
+}

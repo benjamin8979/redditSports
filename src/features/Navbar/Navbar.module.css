@@ -17,19 +17,19 @@
     font-size: 2.5rem;
 }
 
-h3 {
+.h3 {
     font-size: 2.5rem;
 }
 
-span {
+.span {
     color: orangered
 }
 
-button {
+.button {
     border: none;
 }
 
-form {
+.form {
     display: flex;
 }
 
@@ -37,7 +37,7 @@ form {
     font-size: 1.5rem;
 }
 
-input {
+.input {
     width: 200px;
     height: 30px;
     font-size: 1rem;

@@ -1,5 +1,5 @@
 import React from "react";
-import './Post.css';
+import styles from './Post.module.css';
 import {
     TiArrowUpOutline,
     TiArrowUpThick,

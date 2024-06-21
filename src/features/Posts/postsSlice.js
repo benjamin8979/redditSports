@@ -5,7 +5,8 @@ const initialState = {
     error: false,
     isLoading: false,
     searchTerm: "",
-    subreddit: "r/sports"
+    subreddit: "r/Home",
+    logo: "https://styles.redditmedia.com/t5_6/styles/communityIcon_a8uzjit9bwr21.png"
 }
 
 const postSlice = createSlice({
@@ -35,6 +36,9 @@ const postSlice = createSlice({
             state.subreddit = action.payload;
             state.searchTerm = '';
         },
+        setNavLogo(state, action) {
+            state.logo = action.payload;
+        },
         toggleComments(state, action) {
             state.posts[action.payload].showComments = !state.posts[action.payload].showComments;
         },
@@ -60,6 +64,7 @@ export const {
     getPostsSuccess,
     setSearchTerm,
     setSubbredit,
+    setNavLogo,
     toggleComments,
     getCommentsPending,
     getCommentsError,

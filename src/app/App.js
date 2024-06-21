@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import styles from './App.module.css';
 import { Navbar } from '../features/Navbar/Navbar';
 import { Posts } from '../features/Posts/Posts';
 import { Subreddits } from '../features/Subreddits/Subreddits';
