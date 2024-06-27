@@ -1,0 +1,22 @@
+.App {
+    display: grid;
+    grid-template-areas: 
+        "n n"
+        "p s";
+    grid-template-rows: 80px 1fr;
+    grid-template-columns: 3fr 1fr;
+    gap: 10px;
+    
+}
+
+.Nav {
+    grid-area: n;
+}
+
+.Post {
+    grid-area: p;
+}
+
+.Sub {
+    grid-area: s;
+}

@@ -1,9 +1,10 @@
 .Nav {
-    background-color: rgb(240,240,240);
+    background-color: black;
     height: 80px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    border-bottom: 3px solid orangered;
 }
 
 .logo {
@@ -11,6 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    color: rgb(240,240,240);
 }
 
 .sport {

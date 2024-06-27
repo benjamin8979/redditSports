@@ -15,12 +15,11 @@ export function Subreddits() {
 
     return (
         <div className={styles.Subreddits}>
-            <h2>Subreddits</h2>
+            <h2 className={styles.header}>Subreddits</h2>
             <div className={styles.list}>
                 {subs ? subs.map(sub => 
-                    <button className={styles.button} type="button">
+                    <button key={sub.id} className={styles.button} type="button">
                         <Subreddit 
-                            key={sub.id}
                             name={sub.name}
                             image={sub.image}
                         />

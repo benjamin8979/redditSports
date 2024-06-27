@@ -6,10 +6,19 @@ import { Subreddits } from '../features/Subreddits/Subreddits';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Posts />
-      <Subreddits />
+    <div className={styles.App}>
+      <div className={styles.Nav}>
+        <Navbar />
+      </div>
+      <div className={styles.Post}>
+        <Posts />
+      </div>
+      <div className={styles.Sub}>
+        <Subreddits />
+      </div>
+      
+     
+      
     </div>
   );
 }

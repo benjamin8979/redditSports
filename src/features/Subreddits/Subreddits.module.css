@@ -1,5 +1,9 @@
 .Subreddits {
     background-color: rgb(240,240,240);
+    margin-right: 10px;
+    /* border: 1px solid rgb(160,160,160); */
+    box-shadow: 2px 4px 16px rgb(160,160,160);
+    border-radius: 5px;
 }
 
 .list {
@@ -8,9 +12,17 @@
 }
 
 .button {
-    border: none
+    border: none;
+    border-radius: 5px;
 }
 
 .button:hover {
     cursor: pointer;
+}
+
+.header {
+    margin: 0;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    padding-top: 20px;
 }

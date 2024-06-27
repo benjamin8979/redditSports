@@ -1,0 +1,8 @@
+.Posts {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(240, 240, 240);
+    margin-left: 10px;
+    /* border: 1px solid rgb(160,160,160); */
+    /* box-shadow: 2px 4px 16px rgb(160,160,160); */
+}
