@@ -1,7 +1,8 @@
 .Subreddit {
     display: flex;
     align-items: center;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 .img {
     border-radius: 100%;

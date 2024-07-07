@@ -6,7 +6,7 @@ const initialState = {
     error: false,
     isLoading: false,
     searchTerm: "",
-    subreddit: "r/Home",
+    subreddit: "Home",
     logo: "https://styles.redditmedia.com/t5_6/styles/communityIcon_a8uzjit9bwr21.png"
 }
 
@@ -18,17 +18,14 @@ const postsSlice = createSlice({
             state.posts = action.payload;
         },
         getPostsPending(state) {
-            console.log("pending");
             state.error = false;
             state.isLoading = true;
         },
         getPostsError(state) {
-            console.log("error");
             state.error = true;
             state.isLoading = false;
         },
         getPostsSuccess(state, action) {
-            console.log("success");
             state.error = false;
             state.isLoading = false;
             state.posts = action.payload;
@@ -37,6 +34,7 @@ const postsSlice = createSlice({
             state.searchTerm = action.payload;
         },
         setSubbredit(state, action) {
+            console.log("Sub changed")
             state.subreddit = action.payload;
             state.searchTerm = '';
         },
