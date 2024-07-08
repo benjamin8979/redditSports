@@ -14,7 +14,16 @@ export function Navbar() {
     const changedTerm = useSelector(selectSearchTerm);
 
     const onTermChange = (e) => {
-        setTerm(e.target.value);
+       setTerm(e.target.value);
+    }
+
+    useEffect(() => {
+        setTerm(changedTerm);
+    }, [changedTerm]);
+
+    const submitAction = (e) => {
+        e.preventDefault();
+        dispatch(setSearchTerm(term));
     }
 
     return (
@@ -26,7 +35,7 @@ export function Navbar() {
             
             <form className={styles.form}> 
                 <input className={styles.input} type="text" placeholder="Search" value={term} onChange={onTermChange}/>
-                <button className={styles.button} type="submit">
+                <button className={styles.button} type="submit" onClick={submitAction}>
                     <HiOutlineSearch className={styles.search}/>
                 </button>
             </form>

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
 import { postsData } from '../../data/mockData';
 
 const initialState = {
@@ -79,6 +79,20 @@ export const selectPosts = (state) => state.posts.posts;
 export const selectSearchTerm = (state) => state.posts.searchTerm;
 export const selectSubreddit = (state) => state.posts.subreddit;
 export const selectNavLogo = (state) => state.posts.logo;
+
+
+export const selectFilteredPosts = createSelector([selectPosts, selectSearchTerm],(posts, searchTerm) => {
+    if (searchTerm === '' || searchTerm === "RESET") {
+        console.log("BLANK");
+        console.log(posts);
+        return posts;
+    }
+    const filteredPosts = posts.filter((post) => post.post.toLowerCase().includes(searchTerm.toLowerCase()));
+    console.log("FULL");
+    console.log(searchTerm)
+    console.log(posts);
+    return filteredPosts;
+});
 
 export const fetchPosts = () => async (dispatch) => {
     try {

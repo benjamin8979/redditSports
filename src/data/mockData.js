@@ -1,26 +1,31 @@
 export const subs = [
     {
         id: 1,
+        name: "Home",
+        image: "https://styles.redditmedia.com/t5_6/styles/communityIcon_a8uzjit9bwr21.png"
+    },
+    {
+        id: 2,
         name: "Sports",
         image: "https://styles.redditmedia.com/t5_2qgzy/styles/communityIcon_rvt3zjh1fc551.png"
     },
     {
-        id: 2,
+        id: 3,
         name: "NBA",
         image: "https://b.thumbs.redditmedia.com/lh3XYdayDnfF474A_Ro9fBWUViOibSr4BoTpx0ETyvg.png"
     },
     {
-        id: 3,
+        id: 4,
         name: "Soccer",
         image: "https://styles.redditmedia.com/t5_2qi58/styles/communityIcon_fihq6rzyq7q91.png"
     },
     {
-        id: 4,
+        id: 5,
         name: "NFL",
         image: "https://styles.redditmedia.com/t5_2qmg3/styles/communityIcon_hjmge41icy5d1.png"
     },
     {
-        id: 5,
+        id: 6,
         name: "Baseball",
         image: "https://a.thumbs.redditmedia.com/ctpsfO1kRuLsbiuKBCUlmAi1EKSbKhLup5EkvDA1lt4.png"
     }
