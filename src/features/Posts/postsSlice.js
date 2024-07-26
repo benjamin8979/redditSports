@@ -28,7 +28,11 @@ const postsSlice = createSlice({
         getPostsSuccess(state, action) {
             state.error = false;
             state.isLoading = false;
-            state.posts = action.payload;
+            const newPosts = action.payload;
+            newPosts.forEach(post => {
+                post.voteStatus = 0;
+            })
+            state.posts = newPosts;
         },
         setSearchTerm(state, action) {
             state.searchTerm = action.payload;
@@ -59,6 +63,12 @@ const postsSlice = createSlice({
             state.posts[action.payload.index].commentsLoading = false;
             state.posts[action.payload.index].commentsError = false;
             state.posts[action.payload.index].comments = action.payload.postComments;
+        },
+        changeVote(state, action) {
+            if (state.posts[action.payload.index].voteStatus == 0 || state.posts[action.payload.index].voteStatus != action.payload.status) {
+                state.posts[action.payload.index].voteCount += action.payload.change;
+            }
+            state.posts[action.payload.index].voteStatus = action.payload.status;
         }
     }
 })
@@ -74,7 +84,8 @@ export const {
     toggleComments,
     getCommentsPending,
     getCommentsError,
-    getCommentsSuccess
+    getCommentsSuccess,
+    changeVote
 } = postsSlice.actions;
 
 export default postsSlice.reducer;

@@ -8,6 +8,10 @@
     margin-bottom: 2px;
 }
 
+.Comment:hover {
+    background-color: rgb(190,170,240);
+}
+
 .heading {
     display: flex;
     justify-content: space-between;

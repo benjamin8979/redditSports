@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import {Post} from './Post';
 import styles from './Posts.module.css';
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPosts, selectFilteredPosts, selectPosts, fetchComments } from "./postsSlice";
+import { fetchPosts, selectFilteredPosts, selectPosts, fetchComments, changeVote } from "./postsSlice";
 
 export function Posts() {
     const dispatch = useDispatch();
@@ -19,6 +19,10 @@ export function Posts() {
         dispatch(fetchComments(index));
     }
 
+    const onVote = (index, change, status) => {
+        dispatch(changeVote({index, change, status}));
+    }
+
     return (
         <div className={styles.Posts}>
             {filteredPosts ? filteredPosts.map(post => 
@@ -30,11 +34,13 @@ export function Posts() {
                 commentsLoading = {post.commentsLoading}
                 commentsError = {post.commentsError}
                 voteCount = {post.voteCount}
+                voteStatus = {post.voteStatus}
                 post = {post.post}
                 media = {post.media}
                 author = {post.author}
                 time = {post.time}
                 toggleComments = {onToggleComents}
+                vote = {onVote}
                 />
             ) : ""}
         </div>

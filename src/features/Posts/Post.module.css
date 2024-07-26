@@ -29,9 +29,29 @@
     font-size: 1.25rem;
 }
 
+.up:hover {
+    cursor: pointer;
+    color: rgb(0,200,70);
+}
+
+.downSelected {
+    position: relative;
+    top: 4px;
+    color: rgb(240,0,40);
+}
+
+.upSelected {
+    color: rgb(0,200,70);
+}
+
 .down {
     position: relative;
     top: 4px;
+}
+
+.down:hover {
+    cursor: pointer;
+    color: rgb(240,0,40);
 }
 
 .postBody {

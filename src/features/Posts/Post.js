@@ -10,7 +10,31 @@ import {
   } from 'react-icons/ti';
 
 export function Post(props) {
-    const {id, voteCount, comments, showComments, commentsLoading, commentsError, post, media, author, time, toggleComments} = props;
+    const {id, voteCount, voteStatus, comments, showComments, commentsLoading, commentsError, post, media, author, time, toggleComments, vote} = props;
+
+    const upVote = () => {
+        if (voteStatus == 0) {
+            vote(id-1, 1, 2);
+        }
+        if (voteStatus == 1) {
+            vote(id-1, 2, 2);
+        }
+        if (voteStatus == 2) {
+            vote(id-1, -1, 0);
+        }
+    }
+
+    const downVote = () => {
+        if (voteStatus == 0) {
+            vote(id-1, -1, 1);
+        }
+        if (voteStatus == 2) {
+            vote(id-1, -2, 1);
+        }
+        if (voteStatus == 1) {
+            vote(id-1, 1, 0);
+        }
+    }
 
     const displayComments = () => {
         console.log(comments);
@@ -46,13 +70,35 @@ export function Post(props) {
         <div className={styles.Post}>
             <div className={styles.postNoComments}>
                 <div className={styles.votes}>
-                    <button className={styles.button}>
+                    {voteStatus == 2 ? 
+                    <button className={`${styles.button} ${styles.upSelected}`}
+                    onClick = {upVote}
+                   >
+                       <TiArrowUpThick />
+                   </button>
+                    : 
+                    <button className={`${styles.button} ${styles.up}`}
+                     onClick = {upVote}
+                    >
                         <TiArrowUpOutline />
                     </button>
+                    }
+                    
                     <span>{voteCount}</span>
-                    <button className={`${styles.button} ${styles.down}`}>
+                    {voteStatus == 1 ? 
+                    <button className={`${styles.button} ${styles.downSelected}`}
+                        onClick = {downVote}
+                    >
+                        <TiArrowDownThick />
+                    </button>
+                    :
+                    <button className={`${styles.button} ${styles.down}`}
+                     onClick = {downVote}
+                    >
                         <TiArrowDownOutline />
                     </button>
+                    }
+                    
                 </div>
                 <div className={styles.postBody}>
                     <h2>{post}</h2>
