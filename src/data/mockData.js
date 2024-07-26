@@ -35,7 +35,11 @@ export const subs = [
 export const postsData = [
         {
             id: 1,
-            comments: ["Nice", "Lame", "Cool"],
+            comments: [
+                {comment: "Nice", time: "3 hour ago", author: "Nicole"},
+                {comment: "Lame", time: "12 hours ago", author: "Lance"},
+                {comment: "Cool", time: "1 day ago", author: "Carl"}
+            ],
             showComments: false,
             commentsLoading: false,
             commentsError: false,
@@ -47,7 +51,11 @@ export const postsData = [
         },
         {
             id: 2,
-            comments: ["Awesome", "Skip", "Wow"],
+            comments: [
+                {comment: "Awesome", time: "20 minutes ago", author: "Albert"},
+                {comment: "Skip", time: "4 hours ago", author: "Scally"},
+                {comment: "Wow", time: "6 hours ago", author: "Wanda"}
+            ],
             showComments: false,
             commentsLoading: false,
             commentsError: false,
@@ -59,7 +67,11 @@ export const postsData = [
         },
         {
             id: 3,
-            comments: ["Sick", "Nah", "Sweet"],
+            comments: [
+                {comment: "Sick", time: "1 hour ago", author: "Sam"},
+                {comment: "Nah", time: "2 hours ago", author: "Noel"},
+                {comment: "Sweet", time: "5 hours ago", author: "Sylvia"}
+            ],
             showComments: false,
             commentsLoading: false,
             commentsError: false,

@@ -45,6 +45,9 @@ const postsSlice = createSlice({
             state.posts[action.payload].showComments = !state.posts[action.payload].showComments;
         },
         getCommentsPending(state, action) {
+            if (!state.posts[action.payload].showComments) {
+                return;
+            }
             state.posts[action.payload].commentsLoading = true;
             state.posts[action.payload].commentsError = false;
         },
@@ -53,8 +56,9 @@ const postsSlice = createSlice({
             state.posts[action.payload].commentsError = true;
         },
         getCommentsSuccess(state, action) {
-            state.posts[action.payload].commentsLoading = false;
-            state.posts[action.payload].commentsError = true;
+            state.posts[action.payload.index].commentsLoading = false;
+            state.posts[action.payload.index].commentsError = false;
+            state.posts[action.payload.index].comments = action.payload.postComments;
         }
     }
 })
@@ -105,13 +109,15 @@ export const fetchPosts = () => async (dispatch) => {
     }
 }
 
-// export const fetchComments = () => async (dispatch) => {
-//     try {
-//         dispatch(getCommentsPending());
-//         const comments = await postsData;
-//         dispatch(getCommentsSuccess(comments));
-//     }
-//     catch (error) {
-//         dispatch(getCommentsError());
-//     }
-// }
+export const fetchComments = (index) => async (dispatch) => {
+    try {
+        dispatch(toggleComments(index));
+        dispatch(getCommentsPending(index));
+        const posts = await postsData;
+        const postComments = posts[index].comments;
+        dispatch(getCommentsSuccess({index, postComments}));
+    }
+    catch (error) {
+        dispatch(getCommentsError(index));
+    }
+}
