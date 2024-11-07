@@ -31,6 +31,11 @@ const postsSlice = createSlice({
             const newPosts = action.payload;
             newPosts.forEach(post => {
                 post.voteStatus = 0;
+                // post.showComments = false;
+                // post.comments = [];
+                // post.commentsLoading = false;
+                // post.commentsError = false;
+
             })
             state.posts = newPosts;
         },

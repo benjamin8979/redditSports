@@ -9,9 +9,9 @@ export function Posts() {
     const posts = useSelector(selectPosts);
     const filteredPosts = useSelector(selectFilteredPosts);
     console.log(filteredPosts);
+    const isLoading = useSelector((state) => state.posts.isLoading);
 
     useEffect(() => {
-        console.log("FETCHED")
         dispatch(fetchPosts());
     }, [dispatch])
 
@@ -25,7 +25,7 @@ export function Posts() {
 
     return (
         <div className={styles.Posts}>
-            {filteredPosts ? filteredPosts.map(post => 
+            {isLoading ? <p>Loading posts...</p> : filteredPosts && filteredPosts.length > 0 ? filteredPosts.map(post => 
                 <Post 
                 key = {post.id}
                 id = {post.id}
@@ -42,7 +42,7 @@ export function Posts() {
                 toggleComments = {onToggleComents}
                 vote = {onVote}
                 />
-            ) : ""}
+            ) : <p>No posts available</p>}
         </div>
     )
 }

@@ -29,10 +29,15 @@
 }
 
 .button {
-    margin-left: 1px;
+    margin-left: 2px;
     border: none;
     background-color: black;
     color: white;
+    cursor: pointer;
+}
+
+.button:hover {
+    color: orangered;
 }
 
 .form {
@@ -47,8 +52,37 @@
     width: 200px;
     height: 30px;
     font-size: 1rem;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .input {
+        width: 150px;
+    }
+    .Nav {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        justify-content: center;
+    }
+
+    .logo {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .form {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .sport {
+        padding: 10px;
+    }
 }
 
 .input:focus {
-    outline-color: orangered;
+    outline: 2px solid orangered;
 }

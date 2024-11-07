@@ -46,10 +46,11 @@ export function Post(props) {
             );
         }
         else if (commentsLoading) {
-            return 
+            return (
             <div>
                 <h3>Comments Loading</h3>
             </div>
+            );
         }
         else if (showComments) {
             return (
@@ -59,7 +60,7 @@ export function Post(props) {
                       comment = {comment.comment}
                       author = {comment.author}
                       time = {comment.time}
-                    />) : "NOTHING"}
+                    />) : <p>No comments to display</p>}
                 </div>
             )
         }
@@ -102,13 +103,13 @@ export function Post(props) {
                 </div>
                 <div className={styles.postBody}>
                     <h2>{post}</h2>
-                    <img src={media}/>
+                    <img src={media} alt="Post media" style={{display: media ? 'block' : 'none'}}/>
                     <div className={styles.footer}>
                         <span>{author}</span>
                         <span>{time}</span>
                         <div>
                             <button className={styles.commentButton} onClick={() => toggleComments(id-1)}><TiMessage className={styles.commentIcon}/></button>
-                            <span className="num-comments"></span>
+                            <span className={styles.commentCount}>{comments ? comments.length : 0}</span>
                         </div>
                     </div>
                 </div>

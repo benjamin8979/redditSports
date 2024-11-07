@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { subs } from '../../data/mockData';
+import { sportsSubs } from "../../data/data";
+import { subs } from "../../data/mockData";
 
 const initialState = {
     subs: [],
@@ -44,7 +45,7 @@ export const selectSubs = (state) => state.subreddit.subs;
 export const fetchSubs = () => async (dispatch) => {
     try {
         dispatch(getSubsPending());
-        const subReddits = await subs;
+        const subReddits = await sportsSubs;
         dispatch(getSubsSuccess(subReddits));
     }
     catch (error) {

@@ -9,14 +9,30 @@
     
 }
 
+
+
 .Nav {
     grid-area: n;
 }
 
 .Post {
     grid-area: p;
+    overflow-y: auto;
 }
 
 .Sub {
     grid-area: s;
+    overflow-y: auto;
+    padding: 10px;
 }
+
+@media (max-width: 768px) {
+    .App {
+      grid-template-areas: 
+        "n"
+        "p"
+        "s";
+      grid-template-columns: 1fr;
+      grid-template-rows: 80px auto auto;
+    }
+  }

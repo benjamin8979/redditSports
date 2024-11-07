@@ -25,13 +25,18 @@ export function Subreddits() {
             <h2 className={styles.header}>Subreddits</h2>
             <div className={styles.list}>
                 {subs ? subs.map(sub => 
-                    <button onClick={() => {buttonClicked(sub.name, sub.image)}} key={sub.id} className={selected === sub.name ? styles.selected : styles.button} type="button">
+                    <button 
+                    onClick={() => {buttonClicked(sub.name, sub.image)}} 
+                    key={sub.id} 
+                    className={selected === sub.name ? styles.selected : styles.button} 
+                    type="button"
+                    aria-label={`Select ${sub.name}`}>
                         <Subreddit 
                             name={sub.name}
                             image={sub.image}
                         />
                     </button>
-                ) : ""}
+                ) : <p>No subreddits available.</p>}
             </div>
             
         </div>

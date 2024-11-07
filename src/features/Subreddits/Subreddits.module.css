@@ -2,7 +2,7 @@
     background-color: rgb(225,225,235);
     margin-right: 10px;
     /* border: 1px solid rgb(160,160,160); */
-    box-shadow: 2px 4px 16px rgb(160,160,160);
+    box-shadow: inset 0px 1px 6px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
 }
 
@@ -15,7 +15,6 @@
 .button {
     background-color: rgb(225,225,235);
     border: none;
-    /* border-radius: 5px; */
 }
 
 .button:hover {
@@ -24,7 +23,7 @@
 }
 
 .selected {
-    background-color: rgb(255, 170, 139);
+    background-color: rgb(253, 156, 121);
     border: none;
 }
 

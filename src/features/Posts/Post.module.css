@@ -5,10 +5,11 @@
 .postNoComments {
     display: flex;
     align-items: center;
-    box-shadow: 2px 4px 16px rgb(160,160,160);
+    box-shadow: inset 0px 1px 6px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     background-color: rgb(225,225,235);
     margin-bottom: 2px;
+    
 }
 
 .votes {
