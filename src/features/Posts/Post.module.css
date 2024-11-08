@@ -12,9 +12,16 @@
     
 }
 
+.voteContainer {
+    position: relative;
+    left: 20px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+}
+
 .votes {
     position: relative;
-    left: 30px;
     font-weight: 600;
     color: rgb(80,80,80);
     font-size: 1.125rem;

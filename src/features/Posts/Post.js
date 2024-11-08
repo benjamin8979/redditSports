@@ -84,36 +84,38 @@ export function Post(props) {
     return(
         <div className={styles.Post}>
             <div className={styles.postNoComments}>
-                <div className={styles.votes}>
-                    {voteStatus == 2 ? 
-                    <button className={`${styles.button} ${styles.upSelected}`}
-                    onClick = {upVote}
-                   >
-                       <TiArrowUpThick />
-                   </button>
-                    : 
-                    <button className={`${styles.button} ${styles.up}`}
-                     onClick = {upVote}
+                <div className={styles.voteContainer}>
+                    <div className={styles.votes}>
+                        {voteStatus == 2 ? 
+                        <button className={`${styles.button} ${styles.upSelected}`}
+                        onClick = {upVote}
                     >
-                        <TiArrowUpOutline />
+                        <TiArrowUpThick />
                     </button>
-                    }
-                    
-                    <span>{voteCount}</span>
-                    {voteStatus == 1 ? 
-                    <button className={`${styles.button} ${styles.downSelected}`}
+                        : 
+                        <button className={`${styles.button} ${styles.up}`}
+                        onClick = {upVote}
+                        >
+                            <TiArrowUpOutline />
+                        </button>
+                        }
+                        
+                        <span>{voteCount}</span>
+                        {voteStatus == 1 ? 
+                        <button className={`${styles.button} ${styles.downSelected}`}
+                            onClick = {downVote}
+                        >
+                            <TiArrowDownThick />
+                        </button>
+                        :
+                        <button className={`${styles.button} ${styles.down}`}
                         onClick = {downVote}
-                    >
-                        <TiArrowDownThick />
-                    </button>
-                    :
-                    <button className={`${styles.button} ${styles.down}`}
-                     onClick = {downVote}
-                    >
-                        <TiArrowDownOutline />
-                    </button>
-                    }
-                    
+                        >
+                            <TiArrowDownOutline />
+                        </button>
+                        }
+                        
+                    </div>
                 </div>
                 <div className={styles.postBody}>
                     <h2>{post}</h2>
