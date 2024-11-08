@@ -14,25 +14,25 @@ export function Post(props) {
 
     const upVote = () => {
         if (voteStatus == 0) {
-            vote(id-1, 1, 2);
+            vote(id, 1, 2);
         }
         if (voteStatus == 1) {
-            vote(id-1, 2, 2);
+            vote(id, 2, 2);
         }
         if (voteStatus == 2) {
-            vote(id-1, -1, 0);
+            vote(id, -1, 0);
         }
     }
 
     const downVote = () => {
         if (voteStatus == 0) {
-            vote(id-1, -1, 1);
+            vote(id, -1, 1);
         }
         if (voteStatus == 2) {
-            vote(id-1, -2, 1);
+            vote(id, -2, 1);
         }
         if (voteStatus == 1) {
-            vote(id-1, 1, 0);
+            vote(id, 1, 0);
         }
     }
 

@@ -33,8 +33,9 @@ const postsSlice = createSlice({
             state.error = false;
             state.isLoading = false;
             const newPosts = action.payload;
-            newPosts.forEach(post => {
+            newPosts.forEach((post, index) => {
                 post.voteStatus = 0;
+                post.id = index;
                 // post.showComments = false;
                 // post.comments = [];
                 // post.commentsLoading = false;
@@ -75,7 +76,7 @@ const postsSlice = createSlice({
         },
         changeVote(state, action) {
             if (state.posts[action.payload.index].voteStatus == 0 || state.posts[action.payload.index].voteStatus != action.payload.status) {
-                state.posts[action.payload.index].voteCount += action.payload.change;
+                state.posts[action.payload.index].score += action.payload.change;
             }
             state.posts[action.payload.index].voteStatus = action.payload.status;
         }
