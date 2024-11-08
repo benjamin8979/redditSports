@@ -36,6 +36,20 @@ export function Post(props) {
         }
     }
 
+    const getTime = (created) => {
+        const now = Date.now() / 1000;
+        const timeChange = now - created;
+        const minutes = Math.floor(timeChange / 60);
+        const hours = Math.floor(minutes / 60);
+        if (hours >= 24) {
+            return `${Math.floor(hours / 24)} day${Math.floor(hours / 24) > 1 ? 's' : ''} ago`;
+        } 
+        else if (hours == 0) {
+            return `${hours} hour${minutes > 1 || minutes == 0 ? 's' : ''} ago`;
+        }
+        return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+    }
+
     const displayComments = () => {
         //console.log(comments);
         if (commentsError) {
@@ -106,8 +120,8 @@ export function Post(props) {
                     <img src={media} alt="Post media" style={{display: media ? 'block' : 'none'}}/>
                     <div className={styles.footer}>
                         <span>{author}</span>
-                        <span>{time}</span>
-                        <div>
+                        <span className={styles.footItem}>{getTime(time)}</span>
+                        <div className={styles.footItem}>
                             <button className={styles.commentButton} onClick={() => toggleComments(id-1)}><TiMessage className={styles.commentIcon}/></button>
                             <span className={styles.commentCount}>{comments ? comments.length : 0}</span>
                         </div>

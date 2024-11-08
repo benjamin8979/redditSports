@@ -70,6 +70,10 @@
     min-width: 250px;
 }
 
+.footItem {
+    margin-left: 30px;
+}
+
 .commentIcon {
     font-size: 1.5rem;
     color: rgb(80,80,80);
