@@ -37,7 +37,7 @@ export function Post(props) {
     }
 
     const displayComments = () => {
-        console.log(comments);
+        //console.log(comments);
         if (commentsError) {
             return (
                 <div>

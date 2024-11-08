@@ -3,9 +3,10 @@ import { sportsSubs } from '../data/data';
 const root = 'https://www.reddit.com';
 
 export const fetchSubredditPosts = async (subreddit) => {
+    console.log("subreddit " + subreddit);
     const res = await fetch(`${root}/r/${subreddit}.json`);
     const posts = await res.json();
-    return posts;
+    return posts.data.children.map(post => post.data);
 }
 
 // Fetch the most popular 25 subreddits from reddit

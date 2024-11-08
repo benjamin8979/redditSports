@@ -11,9 +11,9 @@ export function Posts() {
     console.log(filteredPosts);
     const isLoading = useSelector((state) => state.posts.isLoading);
 
-    useEffect(() => {
-        dispatch(fetchPosts());
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(fetchPosts());
+    // }, [dispatch])
 
     const onToggleComents = (index) => {
         dispatch(fetchComments(index));
@@ -33,12 +33,12 @@ export function Posts() {
                 showComments = {post.showComments}
                 commentsLoading = {post.commentsLoading}
                 commentsError = {post.commentsError}
-                voteCount = {post.voteCount}
+                voteCount = {post.score}
                 voteStatus = {post.voteStatus}
                 post = {post.post}
                 media = {post.media}
                 author = {post.author}
-                time = {post.time}
+                time = {post.created}
                 toggleComments = {onToggleComents}
                 vote = {onVote}
                 />

@@ -13,17 +13,14 @@ const subRedditSlice = createSlice({
     initialState: initialState,
     reducers: {
         getSubsPending(state) {
-            console.log("Pending");
             state.isLoading = true;
             state.error = false;
         },
         getSubsError(state) {
-            console.log("Error");
             state.isLoading = false;
             state.error = true;
         },
         getSubsSuccess(state, action) {
-            console.log("Success");
             state.isLoading = false;
             state.error = false;
             state.subs = action.payload;

@@ -3,7 +3,7 @@ import styles from './Subreddits.module.css';
 import { Subreddit } from "./Subreddit";
 import { useDispatch, useSelector } from "react-redux";
 import {fetchSubs, selectSubs} from "./subredditSlice";
-import {selectSubreddit, setSubbredit, setNavLogo, setSearchTerm} from "../Posts/postsSlice";
+import {selectSubreddit, setSubbredit, setNavLogo, setSearchTerm, fetchPosts} from "../Posts/postsSlice";
 
 export function Subreddits() {
     const dispatch = useDispatch();
@@ -13,7 +13,8 @@ export function Subreddits() {
 
     useEffect(() => {
         dispatch(fetchSubs());
-    }, [dispatch])
+        dispatch(fetchPosts(selected));
+    }, [dispatch, selected])
 
     const buttonClicked = (newSub, newNav) => {
         dispatch(setSubbredit(newSub));

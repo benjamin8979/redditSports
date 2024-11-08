@@ -1,12 +1,13 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
 import { postsData } from '../../data/mockData';
+import { fetchSubredditPosts } from '../../api/reddit';
 
 const initialState = {
     posts: [],
     error: false,
     isLoading: false,
     searchTerm: "",
-    subreddit: "Home",
+    subreddit: "Sports",
     logo: "https://styles.redditmedia.com/t5_6/styles/communityIcon_a8uzjit9bwr21.png"
 }
 
@@ -18,14 +19,17 @@ const postsSlice = createSlice({
             state.posts = action.payload;
         },
         getPostsPending(state) {
+            console.log("Pending");
             state.error = false;
             state.isLoading = true;
         },
         getPostsError(state) {
+            console.log("Error");
             state.error = true;
             state.isLoading = false;
         },
         getPostsSuccess(state, action) {
+            console.log("Success");
             state.error = false;
             state.isLoading = false;
             const newPosts = action.payload;
@@ -114,10 +118,10 @@ export const selectFilteredPosts = createSelector([selectPosts, selectSearchTerm
     return filteredPosts;
 });
 
-export const fetchPosts = () => async (dispatch) => {
+export const fetchPosts = (subreddit) => async (dispatch) => {
     try {
         dispatch(getPostsPending());
-        const posts = await postsData;
+        const posts = await fetchSubredditPosts(subreddit);
         dispatch(getPostsSuccess(posts));
     }
     catch (error) {
