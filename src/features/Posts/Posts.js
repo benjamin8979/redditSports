@@ -35,7 +35,7 @@ export function Posts() {
                 commentsError = {post.commentsError}
                 voteCount = {post.score}
                 voteStatus = {post.voteStatus}
-                post = {post.post}
+                post = {post.title}
                 media = {post.media}
                 author = {post.author}
                 time = {post.created}

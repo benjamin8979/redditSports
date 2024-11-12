@@ -67,6 +67,7 @@
     left: 60px;
     display: flex;
     flex-direction: column;
+    max-width: 75%;
 }
 
 .footer {

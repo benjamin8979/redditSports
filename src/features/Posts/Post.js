@@ -118,7 +118,7 @@ export function Post(props) {
                     </div>
                 </div>
                 <div className={styles.postBody}>
-                    <h2>{post}</h2>
+                    <h2 className={styles.postTitle}>{post}</h2>
                     <img src={media} alt="Post media" style={{display: media ? 'block' : 'none'}}/>
                     <div className={styles.footer}>
                         <span>{author}</span>
