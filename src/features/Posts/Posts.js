@@ -36,7 +36,9 @@ export function Posts() {
                 voteCount = {post.score}
                 voteStatus = {post.voteStatus}
                 post = {post.title}
-                media = {post.media}
+                image = {post.url}
+                video = {post.media && post.media.reddit_video ? post.media.reddit_video.fallback_url : ""}
+                link = {post.media && post.media.oembed ? post.media.oembed.url : ""}
                 author = {post.author}
                 time = {post.created}
                 toggleComments = {onToggleComents}

@@ -10,7 +10,7 @@ import {
   } from 'react-icons/ti';
 
 export function Post(props) {
-    const {id, voteCount, voteStatus, comments, showComments, commentsLoading, commentsError, post, media, author, time, toggleComments, vote} = props;
+    const {id, voteCount, voteStatus, comments, showComments, commentsLoading, commentsError, post, image, video, link, author, time, toggleComments, vote} = props;
 
     const upVote = () => {
         if (voteStatus == 0) {
@@ -119,7 +119,11 @@ export function Post(props) {
                 </div>
                 <div className={styles.postBody}>
                     <h2 className={styles.postTitle}>{post}</h2>
-                    <img src={media} alt="Post media" style={{display: media ? 'block' : 'none'}}/>
+                    <img src={image} alt="" style={{display: image ? 'block' : 'none'}}/>
+                    <video style={{display: video ? 'block' : 'none'}} controls>
+                        <source src={video}></source>
+                    </video>
+                    <a href={link}tyle={{display: link ? 'block' : 'none'}}>{link}</a>
                     <div className={styles.footer}>
                         <span>{author}</span>
                         <span className={styles.footItem}>{getTime(time)}</span>

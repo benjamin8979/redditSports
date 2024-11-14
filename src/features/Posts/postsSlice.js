@@ -112,7 +112,7 @@ export const selectFilteredPosts = createSelector([selectPosts, selectSearchTerm
         console.log(posts);
         return posts;
     }
-    const filteredPosts = posts.filter((post) => post.post.toLowerCase().includes(searchTerm.toLowerCase()));
+    const filteredPosts = posts.filter((post) => post.title.toLowerCase().includes(searchTerm.toLowerCase()));
     console.log("FULL");
     console.log(searchTerm)
     console.log(posts);
