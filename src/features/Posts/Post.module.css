@@ -96,3 +96,9 @@
 .commentButton:hover {
     cursor: pointer;
 }
+
+.commentCount {
+    position: relative;
+    bottom: 6px;
+    left: 2px;
+}

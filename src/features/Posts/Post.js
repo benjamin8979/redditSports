@@ -10,29 +10,29 @@ import {
   } from 'react-icons/ti';
 
 export function Post(props) {
-    const {id, voteCount, voteStatus, comments, showComments, commentsLoading, commentsError, post, image, video, link, author, time, toggleComments, vote} = props;
+    const {index, voteCount, voteStatus, comments, showComments, commentsLoading, commentsError, post, image, video, link, author, time, toggleComments, vote, numComments} = props;
 
     const upVote = () => {
         if (voteStatus == 0) {
-            vote(id, 1, 2);
+            vote(index, 1, 2);
         }
         if (voteStatus == 1) {
-            vote(id, 2, 2);
+            vote(index, 2, 2);
         }
         if (voteStatus == 2) {
-            vote(id, -1, 0);
+            vote(index, -1, 0);
         }
     }
 
     const downVote = () => {
         if (voteStatus == 0) {
-            vote(id, -1, 1);
+            vote(index, -1, 1);
         }
         if (voteStatus == 2) {
-            vote(id, -2, 1);
+            vote(index, -2, 1);
         }
         if (voteStatus == 1) {
-            vote(id, 1, 0);
+            vote(index, 1, 0);
         }
     }
 
@@ -51,7 +51,6 @@ export function Post(props) {
     }
 
     const displayComments = () => {
-        //console.log(comments);
         if (commentsError) {
             return (
                 <div>
@@ -69,11 +68,14 @@ export function Post(props) {
         else if (showComments) {
             return (
                 <div>
-                    {comments ? comments.map(comment => 
-                    <Comment 
-                      comment = {comment.comment}
+                    {comments ? comments.map((comment, index) => 
+                    <Comment
+                      comment = {comment.body}
                       author = {comment.author}
-                      time = {comment.time}
+                      time = {getTime(comment.created)}
+                      index = {index}
+                      last = {comments.length - 1}
+                      key = {index}
                     />) : <p>No comments to display</p>}
                 </div>
             )
@@ -128,8 +130,8 @@ export function Post(props) {
                         <span>{author}</span>
                         <span className={styles.footItem}>{getTime(time)}</span>
                         <div className={styles.footItem}>
-                            <button className={styles.commentButton} onClick={() => toggleComments(id-1)}><TiMessage className={styles.commentIcon}/></button>
-                            <span className={styles.commentCount}>{comments ? comments.length : 0}</span>
+                            <button className={styles.commentButton} onClick={() => toggleComments(index)}><TiMessage className={styles.commentIcon}/></button>
+                            <span className={styles.commentCount}>{numComments}</span>
                         </div>
                     </div>
                 </div>

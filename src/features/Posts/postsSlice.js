@@ -1,6 +1,6 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
 import { postsData } from '../../data/mockData';
-import { fetchSubredditPosts } from '../../api/reddit';
+import { fetchSubredditPosts, fetchPostComments } from '../../api/reddit';
 
 const initialState = {
     posts: [],
@@ -35,11 +35,11 @@ const postsSlice = createSlice({
             const newPosts = action.payload;
             newPosts.forEach((post, index) => {
                 post.voteStatus = 0;
-                post.id = index;
-                // post.showComments = false;
+                post.index = index;
+                post.showComments = false;
                 // post.comments = [];
-                // post.commentsLoading = false;
-                // post.commentsError = false;
+                post.commentsLoading = false;
+                post.commentsError = false;
 
             })
             state.posts = newPosts;
@@ -56,6 +56,8 @@ const postsSlice = createSlice({
             state.logo = action.payload;
         },
         toggleComments(state, action) {
+            console.log("TOGGLED");
+            console.log("VALUE: " + state.posts[action.payload].showComments);
             state.posts[action.payload].showComments = !state.posts[action.payload].showComments;
         },
         getCommentsPending(state, action) {
@@ -72,7 +74,7 @@ const postsSlice = createSlice({
         getCommentsSuccess(state, action) {
             state.posts[action.payload.index].commentsLoading = false;
             state.posts[action.payload.index].commentsError = false;
-            state.posts[action.payload.index].comments = action.payload.postComments;
+            state.posts[action.payload.index].comments = action.payload.comments;
         },
         changeVote(state, action) {
             if (state.posts[action.payload.index].voteStatus == 0 || state.posts[action.payload.index].voteStatus != action.payload.status) {
@@ -108,14 +110,9 @@ export const selectNavLogo = (state) => state.posts.logo;
 
 export const selectFilteredPosts = createSelector([selectPosts, selectSearchTerm],(posts, searchTerm) => {
     if (searchTerm === '' || searchTerm === "RESET") {
-        console.log("BLANK");
-        console.log(posts);
         return posts;
     }
     const filteredPosts = posts.filter((post) => post.title.toLowerCase().includes(searchTerm.toLowerCase()));
-    console.log("FULL");
-    console.log(searchTerm)
-    console.log(posts);
     return filteredPosts;
 });
 
@@ -130,13 +127,13 @@ export const fetchPosts = (subreddit) => async (dispatch) => {
     }
 }
 
-export const fetchComments = (index) => async (dispatch) => {
+export const fetchComments = (post, index) => async (dispatch) => {
     try {
         dispatch(toggleComments(index));
         dispatch(getCommentsPending(index));
-        const posts = await postsData;
-        const postComments = posts[index].comments;
-        dispatch(getCommentsSuccess({index, postComments}));
+        const comments = await fetchPostComments(post);
+        comments.pop();
+        dispatch(getCommentsSuccess({index, comments}));
     }
     catch (error) {
         dispatch(getCommentsError(index));

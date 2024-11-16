@@ -16,7 +16,7 @@ export function Posts() {
     // }, [dispatch])
 
     const onToggleComents = (index) => {
-        dispatch(fetchComments(index));
+        dispatch(fetchComments(filteredPosts[index] , index));
     }
 
     const onVote = (index, change, status) => {
@@ -27,8 +27,8 @@ export function Posts() {
         <div className={styles.Posts}>
             {isLoading ? <p>Loading posts...</p> : filteredPosts && filteredPosts.length > 0 ? filteredPosts.map(post => 
                 <Post 
-                key = {post.id}
-                id = {post.id}
+                key = {post.index}
+                index = {post.index}
                 comments = {post.comments}
                 showComments = {post.showComments}
                 commentsLoading = {post.commentsLoading}
@@ -41,6 +41,7 @@ export function Posts() {
                 link = {post.media && post.media.oembed ? post.media.oembed.url : ""}
                 author = {post.author}
                 time = {post.created}
+                numComments = {post.num_comments}
                 toggleComments = {onToggleComents}
                 vote = {onVote}
                 />

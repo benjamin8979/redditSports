@@ -2,11 +2,22 @@ import { sportsSubs } from '../data/data';
 
 const root = 'https://www.reddit.com';
 
+// Fetch posts for subreddit
 export const fetchSubredditPosts = async (subreddit) => {
     console.log("subreddit " + subreddit);
     const res = await fetch(`${root}/r/${subreddit}.json`);
     const posts = await res.json();
     return posts.data.children.map(post => post.data);
+}
+
+// Fetch comments for post
+export const fetchPostComments = async (post) => {
+    let path = `${root}/r/${post.subreddit}/comments/${post.id}/${post.title}.json`;
+    path = path.replace('?', '');
+    console.log(path);
+    const res = await fetch(path);
+    const comments = await res.json();
+    return comments[1].data.children.map((comment, index) => comment.data);
 }
 
 // Fetch the most popular 25 subreddits from reddit
@@ -28,7 +39,3 @@ export const fetchSubredditPosts = async (subreddit) => {
 //     }
 //     return final;
 // }
-
-export const fetchComments = async () => {
-    const res = await fetch(`${root}.json`)
-}
