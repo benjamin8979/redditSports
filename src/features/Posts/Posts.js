@@ -1,19 +1,12 @@
-import React, { useEffect } from "react";
 import {Post} from './Post';
 import styles from './Posts.module.css';
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPosts, selectFilteredPosts, selectPosts, fetchComments, changeVote } from "./postsSlice";
+import { selectFilteredPosts, fetchComments, changeVote } from "./postsSlice";
 
 export function Posts() {
     const dispatch = useDispatch();
-    const posts = useSelector(selectPosts);
     const filteredPosts = useSelector(selectFilteredPosts);
-    console.log(filteredPosts);
     const isLoading = useSelector((state) => state.posts.isLoading);
-
-    // useEffect(() => {
-    //     dispatch(fetchPosts());
-    // }, [dispatch])
 
     const onToggleComents = (index) => {
         dispatch(fetchComments(filteredPosts[index] , index));

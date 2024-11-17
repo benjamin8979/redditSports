@@ -1,5 +1,3 @@
-import { sportsSubs } from '../data/data';
-
 const root = 'https://www.reddit.com';
 
 // Fetch posts for subreddit
@@ -12,9 +10,11 @@ export const fetchSubredditPosts = async (subreddit) => {
 
 // Fetch comments for post
 export const fetchPostComments = async (post) => {
-    let path = `${root}/r/${post.subreddit}/comments/${post.id}/${post.title}.json`;
-    path = path.replace('?', '');
-    console.log(path);
+    let postTitle = post.title;
+    postTitle = postTitle.replace('?', '');
+    postTitle = postTitle.replace('!', '');
+    postTitle = postTitle.replace('/', '');
+    let path = `${root}/r/${post.subreddit}/comments/${post.id}/${postTitle}.json`;
     const res = await fetch(path);
     const comments = await res.json();
     return comments[1].data.children.map((comment, index) => comment.data);

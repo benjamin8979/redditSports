@@ -34,7 +34,7 @@ export function Navbar() {
         <div className={styles.Nav}>
             <div className={styles.logo}>
                 <h3 className={styles.h3}>Reddit<span className={styles.span}>Sports</span></h3>
-                <img src={logo} className={styles.sport} onError={defaultImg}/>
+                <img src={logo} className={styles.sport} onError={defaultImg} alt=""/>
             </div>
             
             <form className={styles.form}> 

@@ -13,25 +13,25 @@ export function Post(props) {
     const {index, voteCount, voteStatus, comments, showComments, commentsLoading, commentsError, post, image, video, link, author, time, toggleComments, vote, numComments} = props;
 
     const upVote = () => {
-        if (voteStatus == 0) {
+        if (voteStatus === 0) {
             vote(index, 1, 2);
         }
-        if (voteStatus == 1) {
+        if (voteStatus === 1) {
             vote(index, 2, 2);
         }
-        if (voteStatus == 2) {
+        if (voteStatus === 2) {
             vote(index, -1, 0);
         }
     }
 
     const downVote = () => {
-        if (voteStatus == 0) {
+        if (voteStatus === 0) {
             vote(index, -1, 1);
         }
-        if (voteStatus == 2) {
+        if (voteStatus === 2) {
             vote(index, -2, 1);
         }
-        if (voteStatus == 1) {
+        if (voteStatus === 1) {
             vote(index, 1, 0);
         }
     }
@@ -44,8 +44,8 @@ export function Post(props) {
         if (hours >= 24) {
             return `${Math.floor(hours / 24)} day${Math.floor(hours / 24) > 1 ? 's' : ''} ago`;
         } 
-        else if (hours == 0) {
-            return `${hours} hour${minutes > 1 || minutes == 0 ? 's' : ''} ago`;
+        else if (hours === 0) {
+            return `${hours} hour${minutes > 1 || minutes === 0 ? 's' : ''} ago`;
         }
         return `${hours} hour${hours > 1 ? 's' : ''} ago`;
     }
@@ -88,7 +88,7 @@ export function Post(props) {
             <div className={styles.postNoComments}>
                 <div className={styles.voteContainer}>
                     <div className={styles.votes}>
-                        {voteStatus == 2 ? 
+                        {voteStatus === 2 ? 
                         <button className={`${styles.button} ${styles.upSelected}`}
                         onClick = {upVote}
                     >
@@ -103,7 +103,7 @@ export function Post(props) {
                         }
                         
                         <span>{voteCount}</span>
-                        {voteStatus == 1 ? 
+                        {voteStatus === 1 ? 
                         <button className={`${styles.button} ${styles.downSelected}`}
                             onClick = {downVote}
                         >
@@ -131,7 +131,7 @@ export function Post(props) {
                         <span className={styles.footItem}>{getTime(time)}</span>
                         <div className={styles.footItem}>
                             <button className={styles.commentButton} onClick={() => toggleComments(index)}><TiMessage className={styles.commentIcon}/></button>
-                            <span className={styles.commentCount}>{numComments}</span>
+                            <span className={styles.commentCount}>{numComments-1}</span>
                         </div>
                     </div>
                 </div>

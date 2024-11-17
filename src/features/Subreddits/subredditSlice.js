@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { sportsSubs } from "../../data/data";
-import { subs } from "../../data/mockData";
 
 const initialState = {
     subs: [],

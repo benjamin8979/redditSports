@@ -1,5 +1,4 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
-import { postsData } from '../../data/mockData';
 import { fetchSubredditPosts, fetchPostComments } from '../../api/reddit';
 
 const initialState = {
@@ -56,8 +55,6 @@ const postsSlice = createSlice({
             state.logo = action.payload;
         },
         toggleComments(state, action) {
-            console.log("TOGGLED");
-            console.log("VALUE: " + state.posts[action.payload].showComments);
             state.posts[action.payload].showComments = !state.posts[action.payload].showComments;
         },
         getCommentsPending(state, action) {
@@ -77,7 +74,7 @@ const postsSlice = createSlice({
             state.posts[action.payload.index].comments = action.payload.comments;
         },
         changeVote(state, action) {
-            if (state.posts[action.payload.index].voteStatus == 0 || state.posts[action.payload.index].voteStatus != action.payload.status) {
+            if (state.posts[action.payload.index].voteStatus === 0 || state.posts[action.payload.index].voteStatus !== action.payload.status) {
                 state.posts[action.payload.index].score += action.payload.change;
             }
             state.posts[action.payload.index].voteStatus = action.payload.status;

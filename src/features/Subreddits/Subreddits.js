@@ -3,13 +3,12 @@ import styles from './Subreddits.module.css';
 import { Subreddit } from "./Subreddit";
 import { useDispatch, useSelector } from "react-redux";
 import {fetchSubs, selectSubs} from "./subredditSlice";
-import {selectSubreddit, setSubbredit, setNavLogo, setSearchTerm, fetchPosts} from "../Posts/postsSlice";
+import {selectSubreddit, setSubbredit, setNavLogo, fetchPosts} from "../Posts/postsSlice";
 
 export function Subreddits() {
     const dispatch = useDispatch();
     const subs = useSelector(selectSubs);
     let selected = useSelector(selectSubreddit);
-    console.log(selected);
 
     useEffect(() => {
         dispatch(fetchSubs());
