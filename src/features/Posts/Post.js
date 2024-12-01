@@ -131,7 +131,7 @@ export function Post(props) {
                         <span className={styles.footItem}>{getTime(time)}</span>
                         <div className={styles.footItem}>
                             <button className={styles.commentButton} onClick={() => toggleComments(index)}><TiMessage className={styles.commentIcon}/></button>
-                            <span className={styles.commentCount}>{numComments-1}</span>
+                            <span className={styles.commentCount}>{numComments > 0 ? numComments-1 : numComments}</span>
                         </div>
                     </div>
                 </div>

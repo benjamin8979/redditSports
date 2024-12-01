@@ -1,15 +1,18 @@
 import {Post} from './Post';
 import styles from './Posts.module.css';
 import { useDispatch, useSelector } from "react-redux";
-import { selectFilteredPosts, fetchComments, changeVote } from "./postsSlice";
+import { selectFilteredPosts, selectPosts, fetchComments, changeVote } from "./postsSlice";
 
 export function Posts() {
     const dispatch = useDispatch();
     const filteredPosts = useSelector(selectFilteredPosts);
+    const allPosts = useSelector(selectPosts);
     const isLoading = useSelector((state) => state.posts.isLoading);
 
     const onToggleComents = (index) => {
-        dispatch(fetchComments(filteredPosts[index] , index));
+        console.log(index);
+        console.log(filteredPosts);
+        dispatch(fetchComments(allPosts[index] , index));
     }
 
     const onVote = (index, change, status) => {

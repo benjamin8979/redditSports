@@ -133,6 +133,7 @@ export const fetchComments = (post, index) => async (dispatch) => {
         dispatch(getCommentsSuccess({index, comments}));
     }
     catch (error) {
+        console.log("Error Loading Comments");
         dispatch(getCommentsError(index));
     }
 }
